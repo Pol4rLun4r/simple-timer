@@ -5,9 +5,11 @@ import Layout from "./components/layout/Layout"
 import Clock from "./components/clock/Clock"
 
 function App() {
+  const setTime = {hr: 0, min: 1, sec: 10}
+
   return (
     <Layout>
-      <Clock/>
+      <Clock time={setTime}/>
     </Layout>
   )
 }
