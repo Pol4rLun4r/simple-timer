@@ -5,6 +5,7 @@ interface ITimer {
     seconds: string;
     minutes: string;
     hours: string;
+    milliseconds: number;
   }
 }
 

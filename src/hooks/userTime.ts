@@ -5,8 +5,9 @@ interface IGetRemaining {
     futureTime: Dayjs
 }
 
-const userGetRemainingTime = (setTime: number, startTime: number) => {
-    const currentTime = dayjs();
+const userGetRemainingTime = (setTime: number, startTime: number, timePassed: number) => {
+    const timeThatPassed = timePassed;
+    const currentTime = dayjs(Date.now() + timeThatPassed);
     const futureTime = dayjs(startTime + setTime);
 
     if(futureTime.isBefore(currentTime)){
@@ -14,7 +15,8 @@ const userGetRemainingTime = (setTime: number, startTime: number) => {
             seconds: '00',
             minutes: '00',
             hours: '00',
-            progress: 0
+            progress: 0,
+            milliseconds: 0
         }
     }
 
@@ -22,11 +24,13 @@ const userGetRemainingTime = (setTime: number, startTime: number) => {
         seconds: getRemainingSeconds({currentTime: currentTime, futureTime: futureTime}),
         minutes: getRemainingMinutes({currentTime: currentTime, futureTime: futureTime}),
         hours: getRemainingHours({currentTime: currentTime, futureTime: futureTime}),
-        progress: getRemainingProgress({currentTime: currentTime, futureTime: futureTime})
+        milliseconds: getRemainingInMilliseconds({currentTime: currentTime, futureTime: futureTime}),
+        progress: getRemainingProgress({currentTime: currentTime, futureTime: futureTime}),
     }
 
     function getRemainingSeconds({ currentTime, futureTime }: IGetRemaining) {
         const seconds = futureTime.diff(currentTime, 'seconds') % 60;
+        console.log(seconds);
         return padWithZeros(seconds).toString();
     }
 
@@ -43,7 +47,13 @@ const userGetRemainingTime = (setTime: number, startTime: number) => {
     function getRemainingProgress({ currentTime, futureTime }: IGetRemaining) {
         const remainingTime = futureTime.unix() - currentTime.unix();   
         const progress = ((remainingTime / (setTime / 1000)) * 100);
+        console.log(progress);
         return progress;
+    }
+
+    function getRemainingInMilliseconds({ currentTime, futureTime }: IGetRemaining) {
+        const milliseconds = (setTime - futureTime.diff(currentTime, 'milliseconds'));
+        return milliseconds;
     }
 
     function padWithZeros(numberTime: number) {
