@@ -10,13 +10,28 @@ interface ITimer {
 }
 
 const Timer = ({ remainingTime }: ITimer) => {
+
+  const checkTimerNumbers = (number: string): boolean => {
+    if (number === '00') return false
+    return true
+  };
+
   return (
-    <Counter>
-      <span className="hours">{remainingTime.hours}</span>
-      :
-      <span className="minutes">{remainingTime.minutes}</span>
-      :
-      <span className="seconds">{remainingTime.seconds}</span>
+    <Counter hour={checkTimerNumbers(remainingTime.hours)} minute={checkTimerNumbers(remainingTime.minutes)} >
+      {checkTimerNumbers(remainingTime.hours) &&
+        <>
+          <span className="hours time">{remainingTime.hours}</span>
+          <span>:</span>
+        </>
+      }
+      {checkTimerNumbers(remainingTime.minutes) || checkTimerNumbers(remainingTime.hours) ?
+        <>
+          <span className="minutes time">{remainingTime.minutes}</span>
+          <span>:</span>
+        </>
+        : <></>
+      }
+      <span className="seconds time">{remainingTime.seconds}</span>
     </Counter>
   )
 }
