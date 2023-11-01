@@ -5,8 +5,9 @@ import { leftAndRight, topAndBottom } from "../../../globalStyle/Sides.util";
 const Window = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    gap: 90px;
     
     transition: all 0.5s;
     
@@ -23,10 +24,12 @@ const Window = styled.div`
     }
 
     @media ${device.tablet}{
-        
-        max-width: 500vw;
-        width: 400px;
-        height: 50vh;
+        /* max-width: 600vw;
+        width: 600px;
+        height: 50vh; */
+
+        width: auto;
+        height: auto;
 
         padding: 40px;
 

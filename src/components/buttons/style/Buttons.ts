@@ -10,6 +10,8 @@ const sizeIcons = () => {
     return css`
         width: 30px;
 
+        cursor: pointer;
+
         path {
             fill: #616161;
         }
@@ -32,6 +34,8 @@ export const PlayPauseContainer = styled.div`
     justify-content: center;
 
     box-shadow: 0px 0px 41px rgba(102, 78, 255, 0.45);
+
+    cursor: pointer;
 `
 
 export const PlayStyle = styled(PlayIcon)`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import fontTimer from "../../../../assets/fonts/ProductSans-Black.ttf";
 
 interface ICounter {
     hour: boolean,
@@ -6,11 +7,11 @@ interface ICounter {
 }
 
 const Counter = styled.div`
-    text-transform: uppercase;
-    /* font-size: 25px; hours */
-    /* font-size: 40px; minutes */
-    /* font-size: 50px; seconds */
-    
+    @font-face {
+        font-family: "fontTimer";
+        src: url(${fontTimer});
+    }
+
     font-size: ${({ hour, minute }: ICounter) => hour ? '25px' : minute ? '40px' : '50px'};
 
     position: fixed;
@@ -23,6 +24,10 @@ const Counter = styled.div`
     justify-content: center;
     align-items: center;
 
+    span{
+        font-family: "fontTimer";
+    }
+    
     .time {
         display: flex;
         align-items: center;

@@ -10,9 +10,9 @@ const Buttons = () => {
 
   return (
     <Container>
-      <Settings/>
-      <PlayPause/>
-      <Restart/>
+      <Settings />
+      <PlayPause />
+      <Restart />
     </Container>
   )
 }

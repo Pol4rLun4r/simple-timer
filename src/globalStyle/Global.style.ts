@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import font from "../assets/fonts/ProductSans-Black.ttf"
+import font from "../assets/fonts/ProductSans-Regular.ttf"
 
 const GlobalStyle = createGlobalStyle`  
     @font-face {
@@ -11,7 +11,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: "defaultFont"
+        font-family: "defaultFont";
+        text-transform: uppercase;
     }
 
     body{
